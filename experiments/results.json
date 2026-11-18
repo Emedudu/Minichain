@@ -1,0 +1,383 @@
+{
+  "machine": {
+    "python": "3.13.18",
+    "cpu_count": 2,
+    "platform": "Linux-6.18.44-fc-v236-x86_64-with-glibc2.39"
+  },
+  "avalanche": {
+    "pairs": 1000,
+    "mean_bits": 127.9,
+    "mean_pct": 49.96,
+    "stdev": 7.62,
+    "min": 107,
+    "max": 155,
+    "histogram_8bit_bins": {
+      "104": 17,
+      "112": 119,
+      "120": 347,
+      "128": 365,
+      "136": 123,
+      "144": 27,
+      "152": 2
+    },
+    "example": {
+      "m1": "SIWES Blockchain Training",
+      "h1": "2c520251e844e9f02ab68936a132371825499e0430db3c691499f0a77ade2fa9",
+      "m2": "SIWES Blockchain training",
+      "h2": "8c72405fc638012e36aa11a04ec4d976378b3530604ff8a5d4bfb66a0beb7f19",
+      "bits": 115
+    }
+  },
+  "speed": {
+    "block_header_hashes_per_sec": 159271,
+    "raw_sha256_per_sec": 820918,
+    "keygen_ms": 0.481,
+    "sign_ms": 0.497,
+    "verify_ms": 0.501,
+    "all_verified": true,
+    "sig_len_bytes_mean": 70.9,
+    "pubkey_bytes": 33
+  },
+  "pow": [
+    {
+      "difficulty": 1,
+      "trials": 20,
+      "expected_attempts": 16,
+      "mean_attempts": 12,
+      "median_attempts": 8,
+      "min_attempts": 4,
+      "max_attempts": 36,
+      "mean_seconds": 0.0001,
+      "max_seconds": 0.0
+    },
+    {
+      "difficulty": 2,
+      "trials": 20,
+      "expected_attempts": 256,
+      "mean_attempts": 275,
+      "median_attempts": 262,
+      "min_attempts": 7,
+      "max_attempts": 667,
+      "mean_seconds": 0.0018,
+      "max_seconds": 0.005
+    },
+    {
+      "difficulty": 3,
+      "trials": 20,
+      "expected_attempts": 4096,
+      "mean_attempts": 4107,
+      "median_attempts": 2316,
+      "min_attempts": 16,
+      "max_attempts": 17730,
+      "mean_seconds": 0.0258,
+      "max_seconds": 0.11
+    },
+    {
+      "difficulty": 4,
+      "trials": 20,
+      "expected_attempts": 65536,
+      "mean_attempts": 59835,
+      "median_attempts": 28132,
+      "min_attempts": 1598,
+      "max_attempts": 226274,
+      "mean_seconds": 0.4056,
+      "max_seconds": 1.633
+    },
+    {
+      "difficulty": 5,
+      "trials": 10,
+      "expected_attempts": 1048576,
+      "mean_attempts": 965426,
+      "median_attempts": 770683,
+      "min_attempts": 7913,
+      "max_attempts": 2289335,
+      "mean_seconds": 6.5927,
+      "max_seconds": 15.738
+    }
+  ],
+  "merkle": {
+    "rows": [
+      {
+        "transactions": 1,
+        "proof_hashes": 0,
+        "proof_bytes": 0,
+        "all_txids_bytes": 32,
+        "all_verified": true
+      },
+      {
+        "transactions": 2,
+        "proof_hashes": 1,
+        "proof_bytes": 32,
+        "all_txids_bytes": 64,
+        "all_verified": true
+      },
+      {
+        "transactions": 4,
+        "proof_hashes": 2,
+        "proof_bytes": 64,
+        "all_txids_bytes": 128,
+        "all_verified": true
+      },
+      {
+        "transactions": 8,
+        "proof_hashes": 3,
+        "proof_bytes": 96,
+        "all_txids_bytes": 256,
+        "all_verified": true
+      },
+      {
+        "transactions": 16,
+        "proof_hashes": 4,
+        "proof_bytes": 128,
+        "all_txids_bytes": 512,
+        "all_verified": true
+      },
+      {
+        "transactions": 32,
+        "proof_hashes": 5,
+        "proof_bytes": 160,
+        "all_txids_bytes": 1024,
+        "all_verified": true
+      },
+      {
+        "transactions": 64,
+        "proof_hashes": 6,
+        "proof_bytes": 192,
+        "all_txids_bytes": 2048,
+        "all_verified": true
+      },
+      {
+        "transactions": 128,
+        "proof_hashes": 7,
+        "proof_bytes": 224,
+        "all_txids_bytes": 4096,
+        "all_verified": true
+      },
+      {
+        "transactions": 256,
+        "proof_hashes": 8,
+        "proof_bytes": 256,
+        "all_txids_bytes": 8192,
+        "all_verified": true
+      },
+      {
+        "transactions": 512,
+        "proof_hashes": 9,
+        "proof_bytes": 288,
+        "all_txids_bytes": 16384,
+        "all_verified": true
+      },
+      {
+        "transactions": 1024,
+        "proof_hashes": 10,
+        "proof_bytes": 320,
+        "all_txids_bytes": 32768,
+        "all_verified": true
+      }
+    ],
+    "root_8": "3b828c4f4b48c5d4cb5562a474ec9e2fd8d5546fae40e90732ef635892e42720",
+    "root_8_tampered": "e63719693ef5d99e6dec0db1a046a60f766022e06bf4792ea7d85b0c54535064",
+    "fake_leaf_rejected": true
+  },
+  "validation_cases": [
+    {
+      "case": "Valid transfer: Alice sends 30 to Bob (fee 1)",
+      "result": "Accepted",
+      "reason": ""
+    },
+    {
+      "case": "Amount changed after signing (10 to 90)",
+      "result": "Rejected",
+      "reason": "invalid signature"
+    },
+    {
+      "case": "Mallory signs a transfer from Alice's account",
+      "result": "Rejected",
+      "reason": "invalid signature"
+    },
+    {
+      "case": "Alice spends 500 with a balance of 100",
+      "result": "Rejected",
+      "reason": "insufficient funds"
+    },
+    {
+      "case": "Double spend: second transfer of 70 before the first is mined (only 69 left)",
+      "result": "Rejected",
+      "reason": "insufficient funds"
+    },
+    {
+      "case": "Unsigned transaction",
+      "result": "Rejected",
+      "reason": "missing signature"
+    },
+    {
+      "case": "Negative amount",
+      "result": "Rejected",
+      "reason": "amount must be a positive whole number"
+    },
+    {
+      "case": "Coinbase submitted by a user",
+      "result": "Rejected",
+      "reason": "coinbase transactions cannot be submitted"
+    },
+    {
+      "case": "Replay: the mined Alice-to-Bob transaction sent again",
+      "result": "Rejected",
+      "reason": "wrong nonce (expected 1, got 0): replay or out of order"
+    },
+    {
+      "case": "Bob sends 10 to Carol after receiving 30",
+      "result": "Accepted",
+      "reason": ""
+    }
+  ],
+  "chain_built": {
+    "blocks": 21,
+    "transactions": 80,
+    "transfers": 60
+  },
+  "tamper": [
+    {
+      "attack": "None (untouched chain)",
+      "detected": false,
+      "message": "valid: 21 blocks"
+    },
+    {
+      "attack": "Change a transfer amount in a past block",
+      "detected": true,
+      "message": "block 6: Merkle root does not match its transactions"
+    },
+    {
+      "attack": "Change an amount and recompute the Merkle root",
+      "detected": true,
+      "message": "block 6: stored hash does not match header"
+    },
+    {
+      "attack": "Redirect a mining reward and re-mine that block",
+      "detected": true,
+      "message": "block 9: previous_hash does not match block 8"
+    },
+    {
+      "attack": "Delete a transaction and re-mine that block",
+      "detected": true,
+      "message": "block 7: previous_hash does not match block 6"
+    },
+    {
+      "attack": "Swap the order of two blocks",
+      "detected": true,
+      "message": "block 6: index does not follow 4"
+    },
+    {
+      "attack": "Raise the latest block reward to 5,000 and re-mine",
+      "detected": true,
+      "message": "block 20: coinbase pays more than the block reward"
+    },
+    {
+      "attack": "Change a nonce and store the new hash",
+      "detected": true,
+      "message": "block 10: hash does not meet the difficulty target"
+    }
+  ],
+  "remine_cost": {
+    "tampered_block": 5,
+    "chain_height": 20,
+    "blocks_to_redo": 16,
+    "expected_hashes": 65536,
+    "seconds_at_measured_rate": 0.411,
+    "note": "the honest network keeps adding blocks while the attacker re-mines"
+  },
+  "validate_cost": [
+    {
+      "blocks": 10,
+      "transactions": 40,
+      "validate_ms": 20.1
+    },
+    {
+      "blocks": 25,
+      "transactions": 130,
+      "validate_ms": 67.5
+    },
+    {
+      "blocks": 50,
+      "transactions": 280,
+      "validate_ms": 162.5
+    },
+    {
+      "blocks": 100,
+      "transactions": 580,
+      "validate_ms": 298.1
+    },
+    {
+      "blocks": 200,
+      "transactions": 1180,
+      "validate_ms": 677.5
+    }
+  ],
+  "persistence": {
+    "blocks": 21,
+    "file_kb": 32.2,
+    "load_ms": 135.5,
+    "identical_after_reload": true,
+    "edited_file_refused": true,
+    "refusal": "stored chain rejected: block 8: Merkle root does not match its transactions"
+  },
+  "network": {
+    "nodes": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "links": [
+      "A-B",
+      "B-C",
+      "C-D",
+      "D-E",
+      "E-A",
+      "A-C"
+    ],
+    "block_propagation_ms_mean": 6.4,
+    "block_propagation_ms_max": 8.6,
+    "block_mining_note": "time from broadcast until all five nodes hold the block",
+    "tx_propagation_ms_mean": 7.7,
+    "tx_propagation_ms_max": 12.0,
+    "messages_for_one_block": 10,
+    "all_tips_identical": true,
+    "bob_balance_on_each_node": {
+      "A": 60,
+      "B": 60,
+      "C": 60,
+      "D": 60,
+      "E": 60
+    },
+    "new_node_sync": {
+      "blocks": 12,
+      "adopted": true,
+      "ms": 78.2,
+      "matches_network": true
+    }
+  },
+  "fork": {
+    "before_reconnect": {
+      "P_height": 3,
+      "Q_height": 5,
+      "P_tip": "00080818d738",
+      "Q_tip": "000689cac6ed"
+    },
+    "adopted_longer_chain": true,
+    "after_sync": {
+      "P_height": 5,
+      "P_tip": "000689cac6ed",
+      "tx_back_in_mempool": true
+    },
+    "after_next_block": {
+      "heights": [
+        6,
+        6
+      ],
+      "same_tip": true,
+      "bob_balance": 175
+    }
+  }
+}
